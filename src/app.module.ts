@@ -7,11 +7,13 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
+    // get env variables
     ConfigModule.forRoot({
       envFilePath: '.env',
       isGlobal:true
     }),
-    MongooseModule.forRoot(process.env.DB_URI||''),
+    // connect mongodb
+    MongooseModule.forRoot(process.env.CONNECTIONSTRING||''),
     UserModule],
   controllers: [AppController],
   providers: [AppService],
